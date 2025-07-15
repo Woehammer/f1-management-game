@@ -27,15 +27,29 @@
       button:hover {
         background-color: #1565c0;
       }
+      a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #1976d2;
+      }
     </style>
   </head>
   <body>
     <h1>Login</h1>
-    <form>
+    <form onsubmit="handleLogin(event)">
       <input type="email" placeholder="Email" required />
       <input type="password" placeholder="Password" required />
-      <button type="submit" onclick="alert('Login form submitted')">Login</button>
+      <button type="submit">Login</button>
     </form>
     <a href="index.html">← Back to Home</a>
+
+    <script>
+      function handleLogin(e) {
+        e.preventDefault();
+        // You can add validations or checks here later if needed
+        window.location.href = "dashboard.html";
+      }
+    </script>
   </body>
 </html>

@@ -1,29 +1,106 @@
-<form onsubmit="startGame(event)">
-  <label for="teamName">Your Team Name:</label>
-  <input type="text" id="teamName" placeholder="e.g., Thunder Racing" required />
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Single Player Game - F1 Management Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        padding: 30px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #d32f2f;
+      }
+      label, select, input, button {
+        display: block;
+        width: 250px;
+        margin: 10px auto;
+        padding: 10px;
+        font-size: 16px;
+      }
+      button {
+        background-color: #1976d2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: #1565c0;
+      }
+      a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #1976d2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>New Single Player Game</h1>
+    <form onsubmit="startGame(event)">
+      <label for="teamName">Your Team Name:</label>
+      <input type="text" id="teamName" placeholder="e.g., Thunder Racing" required />
 
-  <label for="startingBudget">Starting Budget:</label>
-  <select id="startingBudget">
-    <option value="50">50 million</option>
-    <option value="75">75 million</option>
-    <option value="100">100 million</option>
-  </select>
+      <label for="startingBudget">Starting Budget:</label>
+      <select id="startingBudget">
+        <option value="50">50 million</option>
+        <option value="75">75 million</option>
+        <option value="100">100 million</option>
+      </select>
 
-  <label for="seasonYear">Season (1950 to 2025):</label>
-  <input type="number" id="seasonYear" placeholder="e.g., 2023" min="1950" max="2025" required />
+      <label for="seasonYear">Season (1950 to 2025):</label>
+      <input type="number" id="seasonYear" placeholder="e.g., 2023" min="1950" max="2025" required />
 
-  <label for="baseTeam">Base Team (optional):</label>
-  <select id="baseTeam">
-    <option value="">-- None --</option>
-    <option value="Ferrari">Ferrari</option>
-    <option value="Mercedes">Mercedes</option>
-    <option value="McLaren">McLaren</option>
-    <option value="Red Bull">Red Bull</option>
-    <option value="Williams">Williams</option>
-    <option value="Lotus">Lotus</option>
-    <option value="Brabham">Brabham</option>
-    <option value="AlphaTauri">AlphaTauri</option>
-  </select>
+      <label for="baseTeam">Base Team (optional):</label>
+      <select id="baseTeam">
+        <option value="">-- None --</option>
+        <option value="Ferrari">Ferrari</option>
+        <option value="Mercedes">Mercedes</option>
+        <option value="McLaren">McLaren</option>
+        <option value="Red Bull">Red Bull</option>
+        <option value="Williams">Williams</option>
+        <option value="Lotus">Lotus</option>
+        <option value="Brabham">Brabham</option>
+        <option value="AlphaTauri">AlphaTauri</option>
+      </select>
 
-  <button type="submit">Start Game</button>
-</form>
+      <button type="submit">Start Game</button>
+    </form>
+
+    <a href="dashboard.html">← Back to Dashboard</a>
+
+    <script>
+      function startGame(e) {
+        e.preventDefault();
+        const teamName = document.getElementById("teamName").value;
+        const budget = document.getElementById("startingBudget").value;
+        const season = document.getElementById("seasonYear").value;
+        const baseTeam = document.getElementById("baseTeam").value;
+
+        if (season < 1950 || season > 2025) {
+          alert("Please enter a valid season year between 1950 and 2025.");
+          return;
+        }
+
+        let summary = 
+          "Game started!\n\nYour Team: " + teamName +
+          "\nBudget: " + budget + " million" +
+          "\nSeason: " + season;
+
+        if (baseTeam) {
+          summary += "\nBase Team: " + baseTeam;
+        } else {
+          summary += "\nBase Team: None";
+        }
+
+        alert(summary);
+
+        // In future: save data to local storage or backend
+        window.location.href = "game-overview.html";
+      }
+    </script>
+  </body>
+</html>

@@ -41,8 +41,8 @@
   <body>
     <h1>New Single Player Game</h1>
     <form onsubmit="startGame(event)">
-      <label for="teamName">Your Team Name:</label>
-      <input type="text" id="teamName" placeholder="e.g., Thunder Racing" required />
+      <label for="teamName">Your Team Name (optional):</label>
+      <input type="text" id="teamName" placeholder="e.g., Thunder Racing" />
 
       <label for="startingBudget">Starting Budget:</label>
       <select id="startingBudget">
@@ -57,14 +57,16 @@
       <label for="baseTeam">Base Team (optional):</label>
       <select id="baseTeam" onchange="handleBaseTeamChange()">
         <option value="">-- None --</option>
-        <option value="Ferrari">Ferrari</option>
-        <option value="Mercedes">Mercedes</option>
+        <option value="Alpine">Alpine</option>
+        <option value="Aston Martin">Aston Martin</option>
+        <option value="Scuderia Ferrari">Scuderia Ferrari</option>
+        <option value="Haas">Haas</option>
         <option value="McLaren">McLaren</option>
-        <option value="Red Bull">Red Bull</option>
-        <option value="Williams">Williams</option>
-        <option value="Lotus">Lotus</option>
-        <option value="Brabham">Brabham</option>
-        <option value="AlphaTauri">AlphaTauri</option>
+        <option value="Mercedes">Mercedes</option>
+        <option value="RB">RB</option>
+        <option value="Red Bull Racing">Red Bull Racing</option>
+        <option value="Sauber">Sauber</option>
+        <option value="Williams Racing">Williams Racing</option>
       </select>
 
       <button type="submit">Start Game</button>
@@ -77,19 +79,16 @@
         const baseTeam = document.getElementById("baseTeam").value;
         const teamNameInput = document.getElementById("teamName");
         if (baseTeam) {
-          teamNameInput.value = baseTeam;
-          teamNameInput.disabled = true;
-          teamNameInput.required = false;
-        } else {
           teamNameInput.value = "";
+          teamNameInput.disabled = true;
+        } else {
           teamNameInput.disabled = false;
-          teamNameInput.required = true;
         }
       }
 
       function startGame(e) {
         e.preventDefault();
-        const teamName = document.getElementById("teamName").value;
+        const teamName = document.getElementById("teamName").value.trim();
         const budget = document.getElementById("startingBudget").value;
         const season = document.getElementById("seasonYear").value;
         const baseTeam = document.getElementById("baseTeam").value;
@@ -99,13 +98,15 @@
           return;
         }
 
-        if (!teamName) {
-          alert("Please enter your team name or select a base team.");
+        if (!teamName && !baseTeam) {
+          alert("Please enter your team name OR select a base team to manage.");
           return;
         }
 
+        let chosenTeam = teamName || baseTeam;
+
         let summary = 
-          "Game started!\n\nYour Team: " + teamName +
+          "Game started!\n\nYour Team: " + chosenTeam +
           "\nBudget: " + budget + " million" +
           "\nSeason: " + season;
 

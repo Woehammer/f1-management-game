@@ -55,7 +55,7 @@
       <input type="number" id="seasonYear" placeholder="e.g., 2023" min="1950" max="2025" required />
 
       <label for="baseTeam">Base Team (optional):</label>
-      <select id="baseTeam">
+      <select id="baseTeam" onchange="handleBaseTeamChange()">
         <option value="">-- None --</option>
         <option value="Ferrari">Ferrari</option>
         <option value="Mercedes">Mercedes</option>
@@ -73,6 +73,20 @@
     <a href="dashboard.html">← Back to Dashboard</a>
 
     <script>
+      function handleBaseTeamChange() {
+        const baseTeam = document.getElementById("baseTeam").value;
+        const teamNameInput = document.getElementById("teamName");
+        if (baseTeam) {
+          teamNameInput.value = baseTeam;
+          teamNameInput.disabled = true;
+          teamNameInput.required = false;
+        } else {
+          teamNameInput.value = "";
+          teamNameInput.disabled = false;
+          teamNameInput.required = true;
+        }
+      }
+
       function startGame(e) {
         e.preventDefault();
         const teamName = document.getElementById("teamName").value;
@@ -82,6 +96,11 @@
 
         if (season < 1950 || season > 2025) {
           alert("Please enter a valid season year between 1950 and 2025.");
+          return;
+        }
+
+        if (!teamName) {
+          alert("Please enter your team name or select a base team.");
           return;
         }
 

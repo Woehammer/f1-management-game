@@ -49,10 +49,11 @@
         <option value="50">50 million</option>
         <option value="75">75 million</option>
         <option value="100">100 million</option>
+        <option value="real">Use real-life team budget</option>
       </select>
 
       <label for="seasonYear">Season (1950 to 2025):</label>
-      <input type="number" id="seasonYear" placeholder="e.g., 2023" min="1950" max="2025" required />
+      <input type="number" id="seasonYear" placeholder="e.g., 2024" min="1950" max="2025" required />
 
       <label for="baseTeam">Base Team (optional):</label>
       <select id="baseTeam" onchange="handleBaseTeamChange()">
@@ -75,6 +76,19 @@
     <a href="dashboard.html">← Back to Dashboard</a>
 
     <script>
+      const teamBudgets2024 = {
+        "Red Bull Racing": 145,
+        "Mercedes": 140,
+        "Scuderia Ferrari": 135,
+        "McLaren": 125,
+        "Aston Martin": 120,
+        "Alpine": 110,
+        "Williams Racing": 95,
+        "Sauber": 90,
+        "Haas": 85,
+        "RB": 80
+      };
+
       function handleBaseTeamChange() {
         const baseTeam = document.getElementById("baseTeam").value;
         const teamNameInput = document.getElementById("teamName");
@@ -89,7 +103,7 @@
       function startGame(e) {
         e.preventDefault();
         const teamName = document.getElementById("teamName").value.trim();
-        const budget = document.getElementById("startingBudget").value;
+        let budget = document.getElementById("startingBudget").value;
         const season = document.getElementById("seasonYear").value;
         const baseTeam = document.getElementById("baseTeam").value;
 
@@ -104,6 +118,15 @@
         }
 
         let chosenTeam = teamName || baseTeam;
+
+        // Handle real-life budget option
+        if (budget === "real") {
+          if (baseTeam && teamBudgets2024[baseTeam]) {
+            budget = teamBudgets2024[baseTeam];
+          } else {
+            budget = 50; // lowest default for custom teams
+          }
+        }
 
         let summary = 
           "Game started!\n\nYour Team: " + chosenTeam +

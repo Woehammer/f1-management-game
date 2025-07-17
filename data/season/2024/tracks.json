@@ -1,57 +1,362 @@
 [
-  {
+    {
+    "round": 1,
     "name": "Bahrain International Circuit",
     "grand_prix": "Bahrain Grand Prix",
     "country": "Bahrain",
+    "city": "Sakhir",
+    "circuit_length": 5412,
+    "laps": 57
     "segments": {
-      "straights": 35,
-      "low_speed_corners": 25,
-      "medium_speed_corners": 25,
+      "straights": 41,
+      "low_speed_corners": 27,
+      "medium_speed_corners": 26,
+      "high_speed_corners": 7
+    }
+  },
+  {
+    "round": 2,
+    "name": "Jeddah Corniche Circuit",
+    "grand_prix": "Saudi Arabian Grand Prix",
+    "country": "Saudi Arabia",
+    "city": "Jeddah",
+    "circuit_length": 6174,
+    "laps": 50
+    "segments": {
+      "straights": 57,
+      "low_speed_corners": 8,
+      "medium_speed_corners": 20,
       "high_speed_corners": 15
     }
   },
   {
-    "name": "Jeddah Street Circuit",
-    "grand_prix": "Saudi Arabian Grand Prix",
-    "country": "Saudi Arabia",
+    "round": 3,
+    "name": "Albert Park Circuit",
+    "grand_prix": "Australian Grand Prix",
+    "country": "Australia",
+    "city": "Melbourne",
+    "circuit_length": 5278,
+    "laps": 58
     "segments": {
-      "straights": 45,
-      "low_speed_corners": 15,
+      "straights": 38,
+      "low_speed_corners": 17,
+      "medium_speed_corners": 33,
+      "high_speed_corners": 12
+    }
+  },
+  {
+    "round": 4,
+    "name": "Suzuka International Racing Course",
+    "grand_prix": "Japanese Grand Prix",
+    "country": "Japan",
+    "city": "Suzuka",
+    "circuit_length": 5807,
+    "laps": 53
+    "segments": {
+      "straights": 22,
+      "low_speed_corners": 12,
+      "medium_speed_corners": 40,
+      "high_speed_corners": 26
+    }
+  },
+   {
+    "round": 5,
+    "name": "Shanghai International Circuit",
+    "grand_prix": "Chinese Grand Prix",
+    "country": "China",
+    "city": "Shanghai",
+    "circuit_length": 5451,
+    "laps": 56
+    "segments": {
+      "straights": 42,
+      "low_speed_corners": 20,
       "medium_speed_corners": 30,
+      "high_speed_corners": 8
+    }
+  },
+   {
+    "round": 6,
+    "name": "Miami International Autodrome, Miami Gardens",
+    "grand_prix": "Miami Grand Prix",
+    "country": "United States",
+    "city": "Miami",
+    "circuit_length": 5412,
+    "laps": 57
+    "segments": {
+      "straights": 38,
+      "low_speed_corners": 30,
+      "medium_speed_corners": 25,
+      "high_speed_corners": 7
+    }
+  },
+  {
+    "round": 7,
+    "name": "Imola Circuit",
+    "grand_prix": "Emilia Romagna Grand Prix",
+    "country": "Italy",
+    "city": "Imola",
+    "circuit_length": 4909,
+    "laps": 63
+    "segments": {
+      "straights": 28,
+      "low_speed_corners": 20,
+      "medium_speed_corners": 37,
+      "high_speed_corners": 15
+    }
+  },
+  {
+    "round": 8,
+    "name": "Circuit de Monaco",
+    "grand_prix": "Monaco Grand Prix",
+    "country": "Monaco",
+    "city": "Monaco",
+    "circuit_length": 3337,
+    "laps": 78
+    "segments": {
+      "straights": 14,
+      "low_speed_corners": 71,
+      "medium_speed_corners": 16,
+      "high_speed_corners": 0
+    }
+  },
+  {
+    "round": 9,
+    "name": "Circuit Giles Villeneuve",
+    "grand_prix": "Canadian Grand Prix",
+    "country": "Canada",
+    "city": "Montreal",
+    "circuit_length": 4361,
+    "laps": 70
+    "segments": {
+      "straights": 55,
+      "low_speed_corners": 30,
+      "medium_speed_corners": 15,
+      "high_speed_corners": 0
+    }
+  },
+  {
+    "round": 10,
+    "name": "Circuit de Barcelona-Catalunya",
+    "grand_prix": "Spanish Grand Prix",
+    "country": "Spain",
+    "city": "Barcelona",
+    "circuit_length": 4657,
+    "laps": 66
+    "segments": {
+      "straights": 28,
+      "low_speed_corners": 17,
+      "medium_speed_corners": 40,
+      "high_speed_corners": 15
+    }
+  },
+  {
+    "round": 11,
+    "name": "Red Bull Ring",
+    "grand_prix": "Austrian Grand Prix",
+    "country": "Austria",
+    "city": "Spielberg",
+    "circuit_length": 4318,
+    "laps": 71
+    "segments": {
+      "straights": 50,
+      "low_speed_corners": 15,
+      "medium_speed_corners": 25,
       "high_speed_corners": 10
     }
   },
   {
-    "name": "Albert Park Circuit",
-    "grand_prix": "Australian Grand Prix",
-    "country": "Australia",
+    "round": 12,
+    "name": "Silverstone Circuit",
+    "grand_prix": "British Grand Prix",
+    "country": "Britain",
+    "city": "Silverstone",
+    "circuit_length": 5891,
+    "laps": 52
     "segments": {
-      "straights": 30,
-      "low_speed_corners": 20,
-      "medium_speed_corners": 35,
-      "high_speed_corners": 15
+      "straights": 31,
+      "low_speed_corners": 19,
+      "medium_speed_corners": 38,
+      "high_speed_corners": 12
+    }
+  },
+   {
+    "round": 13,
+    "name": "Hungaroring",
+    "grand_prix": "Hungarian Grand Prix",
+    "country": "Hungary",
+    "city": "Mogyoród",
+    "circuit_length": 4381,
+    "laps": 70
+    "segments": {
+      "straights": 24,
+      "low_speed_corners": 28,
+      "medium_speed_corners": 37,
+      "high_speed_corners": 11
     }
   },
   {
-    "name": "Suzuka Circuit",
-    "grand_prix": "Japanese Grand Prix",
-    "country": "Japan",
-    "segments": {
-      "straights": 25,
-      "low_speed_corners": 20,
-      "medium_speed_corners": 25,
-      "high_speed_corners": 30
-    }
-  },
-  {
+    "round": 14,
     "name": "Circuit de Spa-Francorchamps",
     "grand_prix": "Belgian Grand Prix",
     "country": "Belgium",
+    "city": "Stavelot",
+    "circuit_length": 7004,
+    "laps": 44
     "segments": {
-      "straights": 30,
+      "straights": 54,
+      "low_speed_corners": 8,
+      "medium_speed_corners": 21,
+      "high_speed_corners": 18
+    }
+  },
+  {
+    "round": 15,
+    "name": "Circuit Zandvoort",
+    "grand_prix": "Dutch Grand Prix",
+    "country": "Netherlands",
+    "city": "Zandvoort",
+    "circuit_length": 4259,
+    "laps": 72
+    "segments": {
+      "straights": 27,
+      "low_speed_corners": 22,
+      "medium_speed_corners": 32,
+      "high_speed_corners": 19
+    }
+  },
+  {
+    "round": 16,
+    "name": "Autodromo Nazionale Monza",
+    "grand_prix": "Italian Grand Prix",
+    "country": "Italy",
+    "city": "Monza",
+    "circuit_length": 5793,
+    "laps": 53
+    "segments": {
+      "straights": 75,
+      "low_speed_corners": 22,
+      "medium_speed_corners": 3,
+      "high_speed_corners": 0
+    }
+  },
+  {
+    "round": 17,
+    "name": "Baku City Circuit",
+    "grand_prix": "Azerbaijan Grand Prix",
+    "country": "Azerbaijan",
+    "city": "Baku",
+    "circuit_length": 6003,
+    "laps": 51
+    "segments": {
+      "straights": 50,
+      "low_speed_corners": 30,
+      "medium_speed_corners": 15,
+      "high_speed_corners": 5
+    }
+  },
+  {
+    "round": 18,
+    "name": "Marina Bay Street Circuit",
+    "grand_prix": "Singapore Grand Prix",
+    "country": "Singapore",
+    "city": "Singapore",
+    "circuit_length": 4940,
+    "laps": 62
+    "segments": {
+      "straights": 23,
+      "low_speed_corners": 62,
+      "medium_speed_corners": 15,
+      "high_speed_corners": 0
+    }
+  },
+  {
+    "round": 19,
+    "name": "Circuit of the Americas",
+    "grand_prix": "United States Grand Prix",
+    "country": "United States",
+    "city": "Austin",
+    "circuit_length": 5513,
+    "laps": 56
+    "segments": {
+      "straights": 28,
+      "low_speed_corners": 22,
+      "medium_speed_corners": 34,
+      "high_speed_corners": 17
+    }
+  },
+   {
+    "round": 20,
+    "name": "Autódromo Hermanos Rodríguez",
+    "grand_prix": "Mexico City Grand Prix",
+    "country": "Mexico",
+    "city": "Mexico City",
+    "circuit_length": 4304,
+    "laps": 71
+    "segments": {
+      "straights": 44,
+      "low_speed_corners": 25,
+      "medium_speed_corners": 25,
+      "high_speed_corners": 6
+    }
+  },
+  {
+    "round": 21,
+    "name": "Interlagos Circuit",
+    "grand_prix": "São Paulo Grand Prix",
+    "country": "Brazil",
+    "city": "São Paulo",
+    "circuit_length": 4309,
+    "laps": 71
+    "segments": {
+      "straights": 39,
+      "low_speed_corners": 22,
+      "medium_speed_corners": 29,
+      "high_speed_corners": 10
+    }
+  },
+   {
+    "round": 22,
+    "name": "Las Vegas Strip Circuit",
+    "grand_prix": "Las Vegas Grand Prix",
+    "country": "United States",
+    "city": "Las Vegas",
+    "circuit_length": 6201,
+    "laps": 50
+    "segments": {
+      "straights": 60,
+      "low_speed_corners": 25,
+      "medium_speed_corners": 12,
+      "high_speed_corners": 3
+    }
+  },
+   {
+    "round": 23,
+    "name": "Lusail International Circuit",
+    "grand_prix": "Qatar Grand Prix",
+    "country": "Qatar",
+    "city": "Lusail",
+    "circuit_length": 5419,
+    "laps": 57
+    "segments": {
+      "straights": 40,
       "low_speed_corners": 10,
       "medium_speed_corners": 25,
-      "high_speed_corners": 35
+      "high_speed_corners": 25
     }
-  }
+  },
+  {
+    "round": 24,
+    "name": "Yas Marina Circuit",
+    "grand_prix": "Abu Dhabi Grand Prix",
+    "country": "Abu Dhabi",
+    "city": "Abu Dhabi",
+    "circuit_length": 5281,
+    "laps": 58
+    "segments": {
+      "straights": 42,
+      "low_speed_corners": 28,
+      "medium_speed_corners": 24,
+      "high_speed_corners": 7
+    }
+  },
 ]

@@ -1,0 +1,202 @@
+[
+  {
+  "name": "Max Verstappen",
+  "team": "Red Bull Racing",
+  "class": "Formula 1",
+  "date_of_birth": "1997-09-30",
+  "nationality": "Netherlands",
+  "stats": {
+    "pace": 98,
+    "reactions": 95,
+    "tyre_management": 95,
+    "braking": 92,
+    "consistency": 97,
+    "adapatability": 95,
+    "wet_skill": 95,
+    "aggression": 92,
+    "concentration": 97,
+    },
+    "contract": {
+      "salary": 65,
+      "duration": 2,
+      "loyalty": 85
+    },
+    "morale": 95,
+    "fitness": 94
+  },
+  {
+  "name": "Sergio Perez",
+  "team": "Red Bull Racing",
+  "class": "Formula 1",
+  "date_of_birth": "1990-01-26",
+  "nationality": "Mexico",
+  "stats": {
+    "pace": 88,
+    "reactions": 87,
+    "tyre_management": 92,
+    "braking": 85,
+    "consistency": 85,
+    "adapatability": 84,
+    "wet_skill": 82,
+    "aggression": 80,
+    "concentration": 85,
+    },
+    "contract": {
+      "salary": 5,
+      "duration": 1,
+      "loyalty": 65
+    },
+    "morale": 85,
+    "fitness": 90
+  },
+  {
+  "name": "Charles Leclerc",
+  "team": "Scuderia Ferrari",
+  "class": "Formula 1",
+  -"date_of_birth": "1997-10-16",
+  "nationality": "Monaco",
+  "stats": {
+    "pace": 94,
+    "reactions": 94,
+    "tyre_management": 85,
+    "braking": 90,
+    "consistency": 85,
+    "adapatability": 88,
+    "wet_skill": 90,
+    "aggression": 93,
+    "concentration": 88,
+    },
+    "contract": {
+      "salary": 34,
+      "duration": 3,
+      "loyalty": 90
+    },
+    "morale": 90,
+    "fitness": 92
+  },
+    {
+  "name": "Carlos Sainz",
+  "team": "Scuderia Ferrari",
+  "class": "Formula 1",
+  -"date_of_birth": "1994-09-01",
+  "nationality": "Spain",
+  "stats": {
+    "pace": 91,
+    "reactions": 90,
+    "tyre_management": 90,
+    "braking": 88,
+    "consistency": 90,
+    "adapatability": 88,
+    "wet_skill": 87,
+    "aggression": 85,
+    "concentration": 90,
+    },
+    "contract": {
+      "salary": 10,
+      "duration": 1,
+      "loyalty": 90
+    },
+    "morale": 88,
+    "fitness": 95
+  },
+    {
+  "name": "Lewis Hamilton",
+  "team": "Mercedes",
+  "class": "Formula 1",
+  -"date_of_birth": "1985-01-07",
+  "nationality": "United Kingdom",
+  "stats": {
+    "pace": 93,
+    "reactions": 94,
+    "tyre_management": 95,
+    "braking": 93,
+    "consistency": 95,
+    "adapatability": 94,
+    "wet_skill": 97,
+    "aggression": 89,
+    "concentration": 96,
+    },
+    "contract": {
+      "salary": 60,
+      "duration": 1,
+      "loyalty": 85
+    },
+    "morale": 80,
+    "fitness": 85
+  },
+    {
+  "name": "George Russell",
+  "team": "Mercedes",
+  "class": "Formula 1",
+  -"date_of_birth": "1998-02-15",
+  "nationality": "United Kingdom",
+  "stats": {
+    "pace": 90,
+    "reactions": 93,
+    "tyre_management": 88,
+    "braking": 89,
+    "consistency": 87,
+    "adapatability": 90,
+    "wet_skill": 90,
+    "aggression": 89,
+    "concentration": 88,
+    },
+    "contract": {
+      "salary": 15,
+      "duration": 2,
+      "loyalty": 88
+    },
+    "morale": 90,
+    "fitness": 92
+  },
+      {
+  "name": "Lando Norris",
+  "team": "McLaren",
+  "class": "Formula 1",
+  -"date_of_birth": "1999-11-13",
+  "nationality": "United Kingdom",
+  "stats": {
+    "pace": 92,
+    "reactions": 92,
+    "tyre_management": 89,
+    "braking": 90,
+    "consistency": 88,
+    "adapatability": 92,
+    "wet_skill": 92,
+    "aggression": 91,
+    "concentration": 89,
+    },
+    "contract": {
+      "salary": 20,
+      "duration": 4,
+      "loyalty": 98
+    },
+    "morale": 95,
+    "fitness": 90
+  },
+    {
+  "name": "Oscar Piastri
+  "team": "McLaren",
+  "class": "Formula 1",
+  -"date_of_birth": "2001-04-06",
+  "nationality": "United Kingdom",
+  "stats": {
+    "pace": 89,
+    "reactions": 90,
+    "tyre_management": 87,
+    "braking": 88,
+    "consistency": 85,
+    "adapatability": 90,
+    "wet_skill": 86,
+    "aggression": 88,
+    "concentration": 87,
+    },
+    "contract": {
+      "salary": 6,
+      "duration": 3,
+      "loyalty": 95
+    },
+    "morale": 95,
+    "fitness": 90
+  },
+ ]

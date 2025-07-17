@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Bahrain International Circuit",
+    "grand_prix": "Bahrain Grand Prix",
+    "country": "Bahrain",
+    "segments": {
+      "straights": 35,
+      "low_speed_corners": 25,
+      "medium_speed_corners": 25,
+      "high_speed_corners": 15
+    }
+  },
+  {
+    "name": "Jeddah Street Circuit",
+    "grand_prix": "Saudi Arabian Grand Prix",
+    "country": "Saudi Arabia",
+    "segments": {
+      "straights": 45,
+      "low_speed_corners": 15,
+      "medium_speed_corners": 30,
+      "high_speed_corners": 10
+    }
+  },
+  {
+    "name": "Albert Park Circuit",
+    "grand_prix": "Australian Grand Prix",
+    "country": "Australia",
+    "segments": {
+      "straights": 30,
+      "low_speed_corners": 20,
+      "medium_speed_corners": 35,
+      "high_speed_corners": 15
+    }
+  },
+  {
+    "name": "Suzuka Circuit",
+    "grand_prix": "Japanese Grand Prix",
+    "country": "Japan",
+    "segments": {
+      "straights": 25,
+      "low_speed_corners": 20,
+      "medium_speed_corners": 25,
+      "high_speed_corners": 30
+    }
+  },
+  {
+    "name": "Circuit de Spa-Francorchamps",
+    "grand_prix": "Belgian Grand Prix",
+    "country": "Belgium",
+    "segments": {
+      "straights": 30,
+      "low_speed_corners": 10,
+      "medium_speed_corners": 25,
+      "high_speed_corners": 35
+    }
+  }
+]

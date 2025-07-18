@@ -45,7 +45,7 @@
       <input type="text" id="teamName" placeholder="e.g., Thunder Racing" />
 
       <label for="seasonYear">Season (1950 to 2025):</label>
-      <select id="SeasonYear" onchange="handleSeasonYearChange()">
+      <select id="SeasonYear">
         <option value="">-- None --</option>
         <option value="2024">2024</option>
        </select>
@@ -70,7 +70,7 @@
         <option value="80">80 million</option>
         <option value="100">100 million</option>
         <option value="120">120 million</option>
-        <option value="Actual">Use real-life team budget</option>
+        <option value="real">Use real-life team budget</option>
       </select>
       
       <button type="submit">Start Game</button>
@@ -81,7 +81,7 @@
     <script>
       const teamBudgets2024 = {
         "Red Bull Racing": 135,
-        "Mercedes": 135`,
+        "Mercedes": 135,
         "Scuderia Ferrari": 135,
         "McLaren": 125,
         "Aston Martin": 120,

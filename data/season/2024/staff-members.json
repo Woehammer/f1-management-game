@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Mattia Binotto",
+    "role": "Technical Director",
+    "team": "Free Agent",
+    "nationality": "Swiss",
+    "stats": {
+      "engineering": 88,
+      "aerodynamics": 79,
+      "management": 65
+    },
+    "morale": 85,
+    "loyalty": 40,
+    "contract_years": 0,
+    "base_salary": 6.0
+  },
+  {
+    "name": "Peter Windsor",
+    "role": "PR Specialist",
+    "team": "Free Agent",
+    "nationality": "British",
+    "stats": {
+      "communication": 90,
+      "strategy": 70
+    },
+    "morale": 78,
+    "loyalty": 35,
+    "contract_years": 0,
+    "base_salary": 3.2
+  },
+  {
+    "name": "Hannah Schmitz",
+    "role": "Strategy Engineer",
+    "team": "Red Bull Racing",
+    "nationality": "British",
+    "stats": {
+      "strategy": 95,
+      "pressure_handling": 89
+    },
+    "morale": 92,
+    "loyalty": 95,
+    "contract_years": 2,
+    "base_salary": 5.5
+  },
+  {
+    "name": "Andrea Stella",
+    "role": "Chief Performance Engineer",
+    "team": "McLaren",
+    "nationality": "Italian",
+    "stats": {
+      "engineering": 87,
+      "aerodynamics": 82
+    },
+    "morale": 88,
+    "loyalty": 90,
+    "contract_years": 3,
+    "base_salary": 6.5
+  },
+  {
+    "name": "James Vowles",
+    "role": "Team Principal",
+    "team": "Williams Racing",
+    "nationality": "British",
+    "stats": {
+      "leadership": 91,
+      "strategy": 84,
+      "finance": 70
+    },
+    "morale": 90,
+    "loyalty": 88,
+    "contract_years": 4,
+    "base_salary": 7.0
+  }
+]

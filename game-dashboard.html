@@ -134,29 +134,3 @@
   </script>
 </body>
 </html>
-
-
-<!-- === dashboard.html (add Load Game option) === -->
-<!-- Place this section in your existing dashboard.html -->
-<div class="section">
-  <h2>Load Saved Game</h2>
-  <button onclick="loadGame()">Load Last Saved Game</button>
-</div>
-
-<script>
-  function loadGame() {
-    const save = localStorage.getItem("f1GameSave");
-    if (!save) {
-      alert("No saved game found.");
-      return;
-    }
-    const saveData = JSON.parse(save);
-    localStorage.setItem("newGameData", JSON.stringify(saveData));
-    window.location.href = "game-dashboard.html";
-  }
-</script>
-
-      }
-    </script>
-  </body>
-</html>

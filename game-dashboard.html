@@ -1,136 +1,129 @@
-<!-- === game-dashboard.html (updated with save support) === -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Game Dashboard - F1 Management Game</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
-    }
-    h1 {
-      color: #d32f2f;
-      text-align: center;
-    }
-    .info, .section {
-      background-color: white;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    button {
-      background-color: #1976d2;
-      color: white;
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1565c0;
-    }
-    h2 {
-      margin-top: 0;
-    }
-    ul {
-      text-align: left;
-    }
-  </style>
-</head>
-<body>
-  <h1>Game Dashboard</h1>
+  <head>
+    <title>Game Dashboard - F1 Management Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+      }
+      h1 {
+        color: #d32f2f;
+        text-align: center;
+      }
+      .info, .section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 700px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      button {
+        background-color: #1976d2;
+        color: white;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #1565c0;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      ul {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Game Dashboard</h1>
 
-  <div class="info">
-    <p><strong>Current Date:</strong> <span id="currentDate">1 January</span></p>
-    <p><strong>Balance:</strong> $<span id="balance">100</span> million</p>
-    <button onclick="advanceWeek()">Advance 1 week</button>
-    <button onclick="saveGame()">Save Game</button>
-  </div>
+    <div class="info">
+      <p><strong>Current Date:</strong> <span id="currentDate">1 January</span></p>
+      <p><strong>Balance:</strong> $<span id="balance">100</span> million</p>
+      <button onclick="advanceWeek()">Advance 1 week</button>
 
-  <div class="section">
-    <h2>Development Progress</h2>
-    <p>No current developments.</p>
-  </div>
+      <h3>Save Game</h3>
+      <button onclick="saveGameToSlot(1)">Save to Slot 1</button>
+      <button onclick="saveGameToSlot(2)">Save to Slot 2</button>
+      <button onclick="saveGameToSlot(3)">Save to Slot 3</button>
+    </div>
 
-  <div class="section">
-    <h2>Contracts & Negotiations</h2>
-    <p>Discuss contracts with drivers and staff here.</p>
-  </div>
+    <div class="section">
+      <h2>Development Progress</h2>
+      <p>No current developments.</p>
+    </div>
 
-  <div class="section">
-    <h2>Research & Development</h2>
-    <p>Plan and execute car upgrades here.</p>
-  </div>
+    <div class="section">
+      <h2>Contracts & Negotiations</h2>
+      <p>Discuss contracts with drivers and staff here.</p>
+    </div>
 
-  <div class="section">
-    <h2>Sponsorship Deals</h2>
-    <p>Negotiate and sign sponsors here.</p>
-  </div>
+    <div class="section">
+      <h2>Research & Development</h2>
+      <p>Plan and execute car upgrades here.</p>
+    </div>
 
-  <div class="section">
-    <h2>Team Personnel</h2>
-    <ul>
-      <li>Team Principal (You)</li>
-      <li>Technical Director</li>
-      <li>Chief Mechanic</li>
-      <li>Driver 1 Engineer</li>
-      <li>Driver 1 Mechanics (20)</li>
-      <li>Driver 2 Engineer</li>
-      <li>Driver 2 Mechanics (20)</li>
-      <li>Chief Performance Engineer</li>
-      <li>Performance Engineers</li>
-      <li>Chief Control Engineer</li>
-      <li>Control Engineers</li>
-      <li>Chief Aerodynamicist</li>
-      <li>Aerodynamic Engineers</li>
-      <li>Data Scientist</li>
-      <li>Head of Marketing</li>
-      <li>Marketing team</li>
-      <li>Engine Engineers</li>
-      <li>Strategy Engineers</li>
-      <li>PR specialists</li>
-      <li>Cleaners</li>
-      <li>Cooks</li>
-    </ul>
-  </div>
+    <div class="section">
+      <h2>Sponsorship Deals</h2>
+      <p>Negotiate and sign sponsors here.</p>
+    </div>
 
-  <script>
-    const newGameData = JSON.parse(localStorage.getItem("newGameData")) || {};
-    let currentDate = new Date(newGameData.currentDate || "2024-01-01");
-    let balance = parseFloat(newGameData.balance) || 100;
-    let teamName = newGameData.teamName || "Unnamed Team";
-    let season = newGameData.season || 2024;
+    <div class="section">
+      <h2>Team Personnel</h2>
+      <ul>
+        <li>Team Principal (You)</li>
+        <li>Technical Director</li>
+        <li>Chief Mechanic</li>
+        <li>Driver 1 Engineer</li>
+        <li>Driver 1 Mechanics (20)</li>
+        <li>Driver 2 Engineer</li>
+        <li>Driver 2 Mechanics (20)</li>
+        <li>Chief Performance Engineer</li>
+        <li>Performance Engineers</li>
+        <li>Chief Control Engineer</li>
+        <li>Control Engineers</li>
+        <li>Chief Aerodynamicist</li>
+        <li>Aerodynamic Engineers</li>
+        <li>Data Scientist</li>
+        <li>Head of Marketing</li>
+        <li>Marketing team</li>
+        <li>Engine Engineers</li>
+        <li>Strategy Engineers</li>
+        <li>PR specialists</li>
+        <li>Cleaners</li>
+        <li>Cooks</li>
+      </ul>
+    </div>
 
-    document.getElementById("balance").innerText = balance.toString();
+    <script>
+      let currentDate = new Date(2024, 0, 1); // 1 Jan 2024
+      let balance = 100; // You can replace with game state later
 
-    function advanceWeek() {
-      currentDate.setDate(currentDate.getDate() + 7);
-      const options = { day: 'numeric', month: 'long' };
-      document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
-    }
+      function advanceWeek() {
+        currentDate.setDate(currentDate.getDate() + 7);
+        const options = { day: 'numeric', month: 'long' };
+        document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
+      }
 
-    function saveGame() {
-      const saveData = {
-        teamName,
-        balance,
-        season,
-        currentDate: currentDate.toISOString()
-      };
-      localStorage.setItem("f1GameSave", JSON.stringify(saveData));
-      alert("Game saved!");
-    }
-
-    window.onload = () => {
-      const options = { day: 'numeric', month: 'long' };
-      document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
-    };
-  </script>
-</body>
+      function saveGameToSlot(slot) {
+        const gameData = {
+          teamName: "Thunder Racing", // Replace with actual team later
+          season: 2024,
+          balance: balance,
+          currentDate: currentDate
+        };
+        localStorage.setItem(`f1GameSaveSlot${slot}`, JSON.stringify(gameData));
+        alert(`Game saved to Slot ${slot}`);
+      }
+    </script>
+  </body>
 </html>

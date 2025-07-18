@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Staff Directory - F1 Management Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('office.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: brightness(0.7);
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.92);
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 1000px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #d32f2f;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #1976d2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All Staff Members</h1>
+    <table id="staffTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Team</th>
+          <th>Nationality</th>
+          <th>Morale</th>
+          <th>Loyalty</th>
+          <th>Contract (Years)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Staff rows populated here -->
+      </tbody>
+    </table>
+
+    <a href="game-dashboard.html">← Back to Dashboard</a>
+  </div>
+
+  <script>
+    async function loadStaff() {
+      const res = await fetch('data/season/2024/staff-members.json');
+      const staff = await res.json();
+      const tbody = document.getElementById("staffTable").querySelector("tbody");
+
+      staff.forEach(member => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${member.name}</td>
+          <td>${member.role}</td>
+          <td>${member.team || "Free Agent"}</td>
+          <td>${member.nationality}</td>
+          <td>${member.morale}</td>
+          <td>${member.loyalty}</td>
+          <td>${member.contract_years}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    loadStaff();
+  </script>
+</body>
+</html>

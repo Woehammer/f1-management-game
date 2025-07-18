@@ -144,8 +144,11 @@
 
         alert(summary);
 
-        // In future: save data to local storage or backend
-        window.location.href = "game-dashboard.html";
+// TEMP: Default to slot 1 for now
+localStorage.setItem("f1ActiveSlot", "1");
+
+// In future: save data to local storage or backend
+window.location.href = "game-dashboard.html";
       }
     </script>
   </body>

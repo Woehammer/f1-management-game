@@ -1,0 +1,18 @@
+[
+  {
+    "id": "schumacher_m",
+    "name": "Michael Schumacher",
+    "dob": "1969-01-03",
+    "nationality": "German",
+    "career_start": 1991,
+    "career_end": 2012,
+    "max_stats": {
+      "pace": 98,
+      "racecraft": 97,
+      "consistency": 95,
+      "wet_skill": 96,
+      "experience": 99,
+      "aggression": 90
+    }
+  },
+]

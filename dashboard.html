@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dashboard - F1 Management Game</title>
+    <title>User Dashboard - F1 Management Game</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
         font-family: sans-serif;
-        text-align: center;
-        padding: 50px;
         background-color: #f5f5f5;
+        padding: 30px;
+        text-align: center;
       }
       h1 {
         color: #d32f2f;
       }
+      .section {
+        background-color: white;
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 500px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
       button {
         display: block;
-        width: 250px;
-        margin: 20px auto;
+        width: 100%;
+        margin: 10px auto;
         padding: 12px;
         font-size: 16px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
         background-color: #1976d2;
         color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
       button:hover {
         background-color: #1565c0;
-      }
-      a {
-        display: inline-block;
-        margin-top: 30px;
-        text-decoration: none;
-        color: #1976d2;
       }
     </style>
   </head>
   <body>
     <h1>User Dashboard</h1>
-    <p>Welcome! Choose what you'd like to do:</p>
 
-    <button onclick="location.href='new-game.html'">New Single Player Game</button>
-    <button onclick="alert('Load single player game (feature coming soon)')">Load Single Player Game</button>
-    <button onclick="alert('Sign up to online game (feature coming soon)')">Sign Up to Online Game</button>
-    <button onclick="alert('Create online game (feature coming soon)')">Create Online Game</button>
+    <div class="section">
+      <h2>Single Player</h2>
+      <button onclick="location.href='new-game.html'">Start New Game</button>
+      <button onclick="loadGame()">Load Last Saved Game</button>
+    </div>
 
-    <a href="index.html">← Back to Home</a>
+    <div class="section">
+      <h2>Online Multiplayer</h2>
+      <button disabled>Join Online Game (Coming Soon)</button>
+      <button disabled>Create Online Game (Coming Soon)</button>
+    </div>
+
+    <script>
+      function loadGame() {
+        const save = localStorage.getItem("f1GameSave");
+        if (!save) {
+          alert("No saved game found.");
+          return;
+        }
+        const saveData = JSON.parse(save);
+        localStorage.setItem("newGameData", JSON.stringify(saveData));
+        window.location.href = "game-dashboard.html";
+      }
+    </script>
   </body>
 </html>

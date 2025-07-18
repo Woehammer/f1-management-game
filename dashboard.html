@@ -37,6 +37,11 @@
       button:hover {
         background-color: #1565c0;
       }
+      #savePreview {
+        font-size: 14px;
+        margin-top: -5px;
+        color: #333;
+      }
     </style>
   </head>
   <body>
@@ -45,7 +50,10 @@
     <div class="section">
       <h2>Single Player</h2>
       <button onclick="location.href='new-game.html'">Start New Game</button>
-      <button onclick="loadGame()">Load Last Saved Game</button>
+      <div id="loadSection" style="display: none;">
+        <button onclick="loadGame()">Load Last Saved Game</button>
+        <div id="savePreview"></div>
+      </div>
     </div>
 
     <div class="section">
@@ -65,6 +73,19 @@
         localStorage.setItem("newGameData", JSON.stringify(saveData));
         window.location.href = "game-dashboard.html";
       }
+
+      // Show load game option if save exists
+      window.onload = () => {
+        const save = localStorage.getItem("f1GameSave");
+        if (!save) return;
+
+        const data = JSON.parse(save);
+        const dateStr = new Date(data.currentDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+        document.getElementById("loadSection").style.display = "block";
+        document.getElementById("savePreview").innerText =
+          `Team: ${data.teamName || "Unknown"}, Season: ${data.season}, Date: ${dateStr}, Balance: $${data.balance}m`;
+      };
     </script>
   </body>
 </html>

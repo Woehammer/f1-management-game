@@ -53,7 +53,7 @@
   "name": "Charles Leclerc",
   "team": "Scuderia Ferrari",
   "class": "Formula 1",
-  -"date_of_birth": "1997-10-16",
+  "date_of_birth": "1997-10-16",
   "nationality": "Monaco",
   "stats": {
     "pace": 94,
@@ -78,7 +78,7 @@
   "name": "Carlos Sainz",
   "team": "Scuderia Ferrari",
   "class": "Formula 1",
-  -"date_of_birth": "1994-09-01",
+  "date_of_birth": "1994-09-01",
   "nationality": "Spain",
   "stats": {
     "pace": 91,
@@ -103,7 +103,7 @@
   "name": "Lewis Hamilton",
   "team": "Mercedes",
   "class": "Formula 1",
-  -"date_of_birth": "1985-01-07",
+  "date_of_birth": "1985-01-07",
   "nationality": "United Kingdom",
   "stats": {
     "pace": 93,
@@ -128,7 +128,7 @@
   "name": "George Russell",
   "team": "Mercedes",
   "class": "Formula 1",
-  -"date_of_birth": "1998-02-15",
+  "date_of_birth": "1998-02-15",
   "nationality": "United Kingdom",
   "stats": {
     "pace": 90,
@@ -153,7 +153,7 @@
   "name": "Lando Norris",
   "team": "McLaren",
   "class": "Formula 1",
-  -"date_of_birth": "1999-11-13",
+  "date_of_birth": "1999-11-13",
   "nationality": "United Kingdom",
   "stats": {
     "pace": 92,
@@ -175,10 +175,10 @@
     "fitness": 90
   },
     {
-  "name": "Oscar Piastri
+  "name": "Oscar Piastri",
   "team": "McLaren",
   "class": "Formula 1",
-  -"date_of_birth": "2001-04-06",
+  "date_of_birth": "2001-04-06",
   "nationality": "United Kingdom",
   "stats": {
     "pace": 89,
@@ -197,6 +197,306 @@
       "loyalty": 95
     },
     "morale": 95,
+    "fitness": 90
+  },
+{
+  "name": "Fernando Alonso",
+  "team": "Aston Martin",
+  "class": "Formula 1",
+  "date_of_birth": "1981-07-29",
+  "nationality": "Spain",
+  "stats": {
+    "pace": 90,
+    "reactions": 91,
+    "tyre_management": 92,
+    "braking": 92,
+    "consistency": 94,
+    "adapatability": 93,
+    "wet_skill": 95,
+    "aggression": 93,
+    "concentration": 95,
+    },
+    "contract": {
+      "salary": 20,
+      "duration": 2,
+      "loyalty": 90
+    },
+    "morale": 90,
+    "fitness": 84
+  },
+  {
+  "name": "Lance Stroll",
+  "team": "Aston Martin",
+  "class": "Formula 1",
+  "date_of_birth": "1998-10-29",
+  "nationality": "Canada",
+  "stats": {
+    "pace": 83,
+    "reactions": 85,
+    "tyre_management": 84,
+    "braking": 82,
+    "consistency": 80,
+    "adapatability": 82,
+    "wet_skill": 80,
+    "aggression": 85,
+    "concentration": 80,
+    },
+    "contract": {
+      "salary": 3,
+      "duration": 2,
+      "loyalty": 98
+    },
+    "morale": 90,
+    "fitness": 90
+  },
+    {
+  "name": "Alexander Albon",
+  "team": "Williams",
+  "class": "Formula 1",
+  "date_of_birth": "1996-03-23",
+  "nationality": "Thailand",
+  "stats": {
+    "pace": 86,
+    "reactions": 88,
+    "tyre_management": 87,
+    "braking": 86,
+    "consistency": 85,
+    "adapatability": 88,
+    "wet_skill": 87,
+    "aggression": 86,
+    "concentration": 86,
+    },
+    "contract": {
+      "salary": 8,
+      "duration": 2,
+      "loyalty": 90
+    },
+    "morale": 90,
+    "fitness": 90
+  },
+   {
+  "name": "Logan Sargeant",
+  "team": "Williams",
+  "class": "Formula 1",
+  "date_of_birth": "2000-12-31",
+  "nationality": "New Zealand",
+  "stats": {
+    "pace": 78,
+    "reactions": 80,
+    "tyre_management": 76,
+    "braking": 77,
+    "consistency": 75,
+    "adapatability": 78,
+    "wet_skill": 75,
+    "aggression": 80,
+    "concentration": 75,
+    },
+    "contract": {
+      "salary": 2,
+      "duration": 1,
+      "loyalty": 85
+    },
+    "morale": 80,
+    "fitness": 88
+  },
+   {
+  "name": "Pierre Gasly",
+  "team": "Alpine",
+  "class": "Formula 1",
+  "date_of_birth": "1996-02-07",
+  "nationality": "France",
+  "stats": {
+    "pace": 87,
+    "reactions": 88,
+    "tyre_management": 85,
+    "braking": 86,
+    "consistency": 84,
+    "adapatability": 84,
+    "wet_skill": 86,
+    "aggression": 85,
+    "concentration": 84,
+    },
+    "contract": {
+      "salary": 10,
+      "duration": 2,
+      "loyalty": 95
+    },
+    "morale": 90,
+    "fitness": 92
+  },
+  {
+  "name": "Esteban Ocon",
+  "team": "Alpine",
+  "class": "Formula 1",
+  "date_of_birth": "1996-09-17",
+  "nationality": "France",
+  "stats": {
+    "pace": 86,
+    "reactions": 87,
+    "tyre_management": 85,
+    "braking": 85,
+    "consistency": 84,
+    "adapatability": 85,
+    "wet_skill": 86,
+    "aggression": 86,
+    "concentration": 85,
+    },
+    "contract": {
+      "salary": 7,
+      "duration": 1,
+      "loyalty": 90
+    },
+    "morale": 85,
+    "fitness": 93
+  },
+  {
+  "name": "Valtteri Bottas",
+  "team": "Sauber",
+  "class": "Formula 1",
+  "date_of_birth": "1989-08-28",
+  "nationality": "Finland",
+  "stats": {
+    "pace": 85,
+    "reactions": 85,
+    "tyre_management": 86,
+    "braking": 85,
+    "consistency": 86,
+    "adapatability": 85,
+    "wet_skill": 84,
+    "aggression": 82,
+    "concentration": 85,
+    },
+    "contract": {
+      "salary": 7,
+      "duration": 1,
+      "loyalty": 90
+    },
+    "morale": 85,
+    "fitness": 90
+  },
+  {
+  "name": "Zhou Guanyu",
+  "team": "Sauber",
+  "class": "Formula 1",
+  "date_of_birth": "1999-05-30",
+  "nationality": "China",
+  "stats": {
+    "pace": 88,
+    "reactions": 85,
+    "tyre_management": 86,
+    "braking": 85,
+    "consistency": 86,
+    "adapatability": 84,
+    "wet_skill": 84,
+    "aggression": 82,
+    "concentration": 85,
+    },
+    "contract": {
+      "salary": 2,
+      "duration": 1,
+      "loyalty": 90
+    },
+    "morale": 85,
+    "fitness": 90
+  },
+  {
+  "name": "Yuki Tsunoda",
+  "team": "RB",
+  "class": "Formula 1",
+  "date_of_birth": "2000-05-11",
+  "nationality": "Japan",
+  "stats": {
+    "pace": 84,
+    "reactions": 86,
+    "tyre_management": 80,
+    "braking": 80,
+    "consistency": 78,
+    "adapatability": 82,
+    "wet_skill": 82,
+    "aggression": 82,
+    "concentration": 80,
+    },
+    "contract": {
+      "salary": 2,
+      "duration": 1,
+      "loyalty": 90
+    },
+    "morale": 85,
+    "fitness": 90
+  },
+  {
+  "name": "Daniel Ricciardo",
+  "team": "RB",
+  "class": "Formula 1",
+  "date_of_birth": "1989-07-01",
+  "nationality": "Australia",
+  "stats": {
+    "pace": 83,
+    "reactions": 85,
+    "tyre_management": 83,
+    "braking": 83,
+    "consistency": 82,
+    "adapatability": 84,
+    "wet_skill": 84,
+    "aggression": 85,
+    "concentration": 83,
+    },
+    "contract": {
+      "salary": 7,
+      "duration": 1,
+      "loyalty": 80
+    },
+    "morale": 85,
+    "fitness": 90
+  },
+   {
+  "name": "Kevin Magnussen",
+  "team": "Haas",
+  "class": "Formula 1",
+  "date_of_birth": "1992-10-05",
+  "nationality": "Denmark",
+  "stats": {
+    "pace": 83,
+    "reactions": 85,
+    "tyre_management": 83,
+    "braking": 83,
+    "consistency": 82,
+    "adapatability": 84,
+    "wet_skill": 84,
+    "aggression": 85,
+    "concentration": 83,
+    },
+    "contract": {
+      "salary": 3,
+      "duration": 1,
+      "loyalty": 85
+    },
+    "morale": 85,
+    "fitness": 90
+  },
+  {
+  "name": "Nico Hülkenberg",
+  "team": "Haas",
+  "class": "Formula 1",
+  "date_of_birth": "1987-08-19",
+  "nationality": "Germany",
+  "stats": {
+    "pace": 83,
+    "reactions": 85,
+    "tyre_management": 80,
+    "braking": 83,
+    "consistency": 82,
+    "adapatability": 83,
+    "wet_skill": 82,
+    "aggression": 84,
+    "concentration": 82,
+    },
+    "contract": {
+      "salary": 7,
+      "duration": 1,
+      "loyalty": 88
+    },
+    "morale": 85,
     "fitness": 90
   },
  ]

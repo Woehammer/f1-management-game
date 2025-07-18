@@ -47,10 +47,12 @@
     <h1>Game Dashboard</h1>
 
     <div class="info">
-      <p><strong>Current Date:</strong> <span id="currentDate">Loading...</span></p>
-      <p><strong>Balance:</strong> $<span id="balance">Loading...</span> million</p>
-      <button onclick="advanceWeek()">Advance 1 week</button>
-      <button onclick="openSaveModal()">Save Game</button>
+  <p><strong>Team:</strong> <span id="teamName">Loading...</span></p>
+  <p><strong>Season:</strong> <span id="season">Loading...</span></p>
+  <p><strong>Current Date:</strong> <span id="currentDate">Loading...</span></p>
+  <p><strong>Balance:</strong> $<span id="balance">Loading...</span> million</p>
+  <button onclick="advanceWeek()">Advance 1 week</button>
+  <button onclick="openSaveModal()">Save Game</button>
     </div>
 
     <div class="section">
@@ -141,9 +143,11 @@
       }
 
       function updateUI() {
-        const options = { day: 'numeric', month: 'long' };
-        document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
-        document.getElementById("balance").innerText = balance;
+  const options = { day: 'numeric', month: 'long' };
+  document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
+  document.getElementById("balance").innerText = balance;
+  document.getElementById("teamName").innerText = teamName || "Custom Team";
+  document.getElementById("season").innerText = season || "2024";
       }
 
       function advanceWeek() {

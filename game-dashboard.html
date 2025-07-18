@@ -10,18 +10,21 @@
         background-color: #f5f5f5;
         padding: 20px;
       }
+
       h1 {
         color: #d32f2f;
         text-align: center;
       }
+
       .info, .section {
         background-color: white;
         border-radius: 8px;
         padding: 20px;
         margin: 20px auto;
         max-width: 700px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
+
       button {
         background-color: #1976d2;
         color: white;
@@ -32,14 +35,58 @@
         font-size: 16px;
         cursor: pointer;
       }
+
       button:hover {
         background-color: #1565c0;
       }
+
       h2 {
         margin-top: 0;
       }
+
       ul {
         text-align: left;
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        width: 300px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .modal-content h3 {
+        margin-top: 0;
+        color: #d32f2f;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: -10px;
+      }
+
+      .close:hover {
+        color: black;
       }
     </style>
   </head>
@@ -50,11 +97,7 @@
       <p><strong>Current Date:</strong> <span id="currentDate">1 January</span></p>
       <p><strong>Balance:</strong> $<span id="balance">100</span> million</p>
       <button onclick="advanceWeek()">Advance 1 week</button>
-
-      <h3>Save Game</h3>
-      <button onclick="saveGameToSlot(1)">Save to Slot 1</button>
-      <button onclick="saveGameToSlot(2)">Save to Slot 2</button>
-      <button onclick="saveGameToSlot(3)">Save to Slot 3</button>
+      <button onclick="openSaveModal()">Save Game</button>
     </div>
 
     <div class="section">
@@ -104,9 +147,20 @@
       </ul>
     </div>
 
+    <!-- Save Game Modal -->
+    <div id="saveModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeSaveModal()">&times;</span>
+        <h3>Save Game to Slot</h3>
+        <button onclick="saveGameToSlot(1)">Slot 1</button>
+        <button onclick="saveGameToSlot(2)">Slot 2</button>
+        <button onclick="saveGameToSlot(3)">Slot 3</button>
+      </div>
+    </div>
+
     <script>
-      let currentDate = new Date(2024, 0, 1); // 1 Jan 2024
-      let balance = 100; // You can replace with game state later
+      let currentDate = new Date(2024, 0, 1);
+      let balance = 100;
 
       function advanceWeek() {
         currentDate.setDate(currentDate.getDate() + 7);
@@ -114,16 +168,33 @@
         document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
       }
 
+      function openSaveModal() {
+        document.getElementById("saveModal").style.display = "block";
+      }
+
+      function closeSaveModal() {
+        document.getElementById("saveModal").style.display = "none";
+      }
+
       function saveGameToSlot(slot) {
         const gameData = {
-          teamName: "Thunder Racing", // Replace with actual team later
+          teamName: "Thunder Racing", // Replace with actual team name from game state
           season: 2024,
           balance: balance,
           currentDate: currentDate
         };
         localStorage.setItem(`f1GameSaveSlot${slot}`, JSON.stringify(gameData));
         alert(`Game saved to Slot ${slot}`);
+        closeSaveModal();
       }
+
+      // Close modal on outside click
+      window.onclick = function(event) {
+        const modal = document.getElementById("saveModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
     </script>
   </body>
 </html>

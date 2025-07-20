@@ -41,18 +41,34 @@
       ul {
         text-align: left;
       }
+      .reputation-bar-container {
+        background: #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        height: 10px;
+        margin-top: 5px;
+      }
+      .reputation-bar {
+        height: 10px;
+        background: #1976d2;
+        width: 0%;
+      }
     </style>
   </head>
   <body>
     <h1>Game Dashboard</h1>
 
     <div class="info">
-  <p><strong>Team:</strong> <span id="teamName">Loading...</span></p>
-  <p><strong>Season:</strong> <span id="season">Loading...</span></p>
-  <p><strong>Current Date:</strong> <span id="currentDate">Loading...</span></p>
-  <p><strong>Balance:</strong> $<span id="balance">Loading...</span> million</p>
-  <button onclick="advanceWeek()">Advance 1 week</button>
-  <button onclick="openSaveModal()">Save Game</button>
+      <p><strong>Team:</strong> <span id="teamName">Loading...</span></p>
+      <p><strong>Season:</strong> <span id="season">Loading...</span></p>
+      <p><strong>Current Date:</strong> <span id="currentDate">Loading...</span></p>
+      <p><strong>Balance:</strong> $<span id="balance">Loading...</span> million</p>
+      <p><strong>Reputation:</strong> <span id="reputationScore">Loading...</span> <span id="reputationLabel"></span></p>
+      <div class="reputation-bar-container">
+        <div id="reputationBar" class="reputation-bar"></div>
+      </div>
+      <button onclick="advanceWeek()">Advance 1 week</button>
+      <button onclick="openSaveModal()">Save Game</button>
     </div>
 
     <div class="section">
@@ -118,6 +134,7 @@
       let balance;
       let teamName = "";
       let season = "";
+      let reputation = 40;
 
       function loadGame() {
         const slot = localStorage.getItem("f1ActiveSlot");
@@ -138,16 +155,27 @@
         balance = save.balance || 100;
         teamName = save.teamName || "";
         season = save.season || "";
+        reputation = save.reputation || 40;
 
         updateUI();
       }
 
       function updateUI() {
-  const options = { day: 'numeric', month: 'long' };
-  document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
-  document.getElementById("balance").innerText = balance;
-  document.getElementById("teamName").innerText = teamName || "Custom Team";
-  document.getElementById("season").innerText = season || "2024";
+        const options = { day: 'numeric', month: 'long' };
+        document.getElementById("currentDate").innerText = currentDate.toLocaleDateString("en-GB", options);
+        document.getElementById("balance").innerText = balance;
+        document.getElementById("teamName").innerText = teamName || "Custom Team";
+        document.getElementById("season").innerText = season || "2024";
+        document.getElementById("reputationScore").innerText = reputation + "/100";
+        document.getElementById("reputationLabel").innerText = getReputationLabel(reputation);
+        document.getElementById("reputationBar").style.width = reputation + "%";
+      }
+
+      function getReputationLabel(score) {
+        if (score < 25) return "(Unknown)";
+        if (score < 50) return "(Developing)";
+        if (score < 75) return "(Respected)";
+        return "(Elite)";
       }
 
       function advanceWeek() {
@@ -168,7 +196,8 @@
           currentDate,
           balance,
           teamName,
-          season
+          season,
+          reputation
         };
 
         localStorage.setItem(`f1GameSaveSlot${slot}`, JSON.stringify(saveData));

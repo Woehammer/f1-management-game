@@ -26,6 +26,7 @@
         color: white;
         border: none;
         border-radius: 5px;
+        cursor: pointer;
       }
       button:hover {
         background-color: #1565c0;
@@ -36,11 +37,28 @@
         text-decoration: none;
         color: #1976d2;
       }
+      /* Modal styling */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0,0,0,0.5);
+      }
+      .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 8px;
+      }
     </style>
   </head>
   <body>
     <h1>New Single Player Game</h1>
-    <form onsubmit="startGame(event)">
+    <form onsubmit="prepareGame(event)">
       <label for="teamName">Your Team Name (optional):</label>
       <input type="text" id="teamName" placeholder="e.g., Thunder Racing" />
 
@@ -48,7 +66,7 @@
       <select id="seasonYear">
         <option value="">-- None --</option>
         <option value="2024">2024</option>
-       </select>
+      </select>
 
       <label for="baseTeam">Base Team (optional):</label>
       <select id="baseTeam" onchange="handleBaseTeamChange()">
@@ -65,7 +83,7 @@
         <option value="Williams Racing">Williams Racing</option>
       </select>
 
-        <label for="startingBudget">Starting Budget:</label>
+      <label for="startingBudget">Starting Budget:</label>
       <select id="startingBudget">
         <option value="80">80 million</option>
         <option value="100">100 million</option>
@@ -77,6 +95,17 @@
     </form>
 
     <a href="dashboard.html">← Back to Dashboard</a>
+
+    <!-- Modal -->
+    <div id="slotModal" class="modal">
+      <div class="modal-content">
+        <h3>Choose a Save Slot</h3>
+        <button onclick="saveToSlot(1)">Save to Slot 1</button>
+        <button onclick="saveToSlot(2)">Save to Slot 2</button>
+        <button onclick="saveToSlot(3)">Save to Slot 3</button>
+        <button onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
 
     <script>
       const teamBudgets2024 = {
@@ -92,6 +121,8 @@
         "RB": 80
       };
 
+      let preparedGame = null; // Will store game data until user picks a slot
+
       function handleBaseTeamChange() {
         const baseTeam = document.getElementById("baseTeam").value;
         const teamNameInput = document.getElementById("teamName");
@@ -103,7 +134,7 @@
         }
       }
 
-      function startGame(e) {
+      function prepareGame(e) {
         e.preventDefault();
         const teamName = document.getElementById("teamName").value.trim();
         let budget = document.getElementById("startingBudget").value;
@@ -120,35 +151,43 @@
           return;
         }
 
-        let chosenTeam = teamName || baseTeam;
+        const chosenTeam = teamName || baseTeam;
 
-        // Handle real-life budget option
         if (budget === "real") {
-          if (baseTeam && teamBudgets2024[baseTeam]) {
-            budget = teamBudgets2024[baseTeam];
-          } else {
-            budget = 50; // lowest default for custom teams
-          }
+          budget = baseTeam && teamBudgets2024[baseTeam] ? teamBudgets2024[baseTeam] : 50;
         }
 
-        let summary = 
-          "Game started!\n\nYour Team: " + chosenTeam +
-          "\nBudget: " + budget + " million" +
-          "\nSeason: " + season;
+        preparedGame = {
+          teamName: chosenTeam,
+          baseTeam,
+          season,
+          budget: parseInt(budget),
+          currentDate: new Date(2024, 0, 1)
+        };
 
-        if (baseTeam) {
-          summary += "\nBase Team: " + baseTeam;
-        } else {
-          summary += "\nBase Team: None";
-        }
+        document.getElementById("slotModal").style.display = "block";
+      }
 
-        alert(summary);
+      function saveToSlot(slot) {
+        if (!preparedGame) return;
 
-// TEMP: Default to slot 1 for now
-localStorage.setItem("f1ActiveSlot", "1");
+        const gameData = {
+          teamName: preparedGame.teamName,
+          baseTeam: preparedGame.baseTeam,
+          season: preparedGame.season,
+          balance: preparedGame.budget,
+          currentDate: preparedGame.currentDate
+        };
 
-// In future: save data to local storage or backend
-window.location.href = "game-dashboard.html";
+        localStorage.setItem(`f1GameSaveSlot${slot}`, JSON.stringify(gameData));
+        localStorage.setItem("f1ActiveSlot", slot);
+        document.getElementById("slotModal").style.display = "none";
+        window.location.href = "game-dashboard.html";
+      }
+
+      function closeModal() {
+        document.getElementById("slotModal").style.display = "none";
+        preparedGame = null;
       }
     </script>
   </body>

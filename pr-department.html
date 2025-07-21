@@ -1,141 +1,161 @@
 <!DOCTYPE html><html>
-<head>
-  <title>PR Department - F1 Management Game</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
-    }
-    h1 {
-      color: #d32f2f;
-      text-align: center;
-    }
-    .section {
-      background-color: white;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    button {
-      background-color: #1976d2;
-      color: white;
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1565c0;
-    }
-    .sponsor-slot {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>PR Department</h1>  <div class="section">
-    <h2>Reputation</h2>
-    <p>Your team reputation score: <strong><span id="reputation">Loading...</span></strong></p>
-    <p>Host weekly media events to boost your reputation.</p>
-  </div>  <div class="section">
-    <h2>Sponsor Slots</h2><div id="sponsorSlots"></div>
-
-  </div>  <!-- Sponsor Modal -->  <div id="sponsorModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-    <div class="modal-content" style="max-width: 500px; margin: 10% auto; background: #fff; padding: 20px; border-radius: 8px;">
-      <h3>Available Sponsors</h3>
-      <div id="sponsorOptions"></div>
-      <button onclick="closeSponsorModal()">Cancel</button>
-    </div>
-  </div>  <script>
-    const locations = [
-      "Front Wing", "Rear Wing", "Side Pod", "Engine Cover"
-    ];
-
-    const sponsors = [
-      { name: "TechCorp", signingFee: 10, perRaceFee: 5, bonusCondition: "Top 5 finish", bonusPayout: 10, contractLength: 5 },
-      { name: "ZoomFuel", signingFee: 8, perRaceFee: 4, bonusCondition: "Score 20 points in 3 races", bonusPayout: 6, contractLength: 3 },
-      { name: "RacerEdge", signingFee: 12, perRaceFee: 6, bonusCondition: "1 podium", bonusPayout: 8, contractLength: 4 }
-    ];
-
-    let selectedSlotKey = "";
-
-    function loadReputation() {
-      const rep = localStorage.getItem("f1TeamReputation") || 50;
-      document.getElementById("reputation").innerText = rep;
-    }
-
-    function loadSponsorSlots() {
-      const container = document.getElementById("sponsorSlots");
-      container.innerHTML = "";
-
-      locations.forEach(location => {
-        ["Primary", "Secondary 1", "Secondary 2"].forEach(type => {
-          const slotKey = `${location} - ${type}`;
-          const data = JSON.parse(localStorage.getItem(`f1Sponsor_${slotKey}`)) || null;
-
-          const div = document.createElement("div");
-          div.className = "sponsor-slot";
-          div.innerHTML = `
-            <span><strong>${slotKey}:</strong> ${data ? data.name + ` (${data.remaining} races left)` : "Empty"}</span>
-            <button onclick="openSponsorModal('${slotKey}')">${data ? "View" : "Choose"}</button>
-          `;
-          container.appendChild(div);
-        });
-      });
-    }
-
-    function openSponsorModal(slotKey) {
-      selectedSlotKey = slotKey;
-      document.getElementById("sponsorModal").style.display = "block";
-
-      const options = document.getElementById("sponsorOptions");
-      options.innerHTML = "";
-      sponsors.forEach(sponsor => {
-        const btn = document.createElement("button");
-        btn.innerText = `${sponsor.name} - $${sponsor.signingFee}M signing`;
-        btn.onclick = () => signSponsor(sponsor);
-        options.appendChild(btn);
-      });
-    }
-
-    function closeSponsorModal() {
-      document.getElementById("sponsorModal").style.display = "none";
-    }
-
-    function signSponsor(sponsor) {
-      const save = JSON.parse(localStorage.getItem("f1GameSaveSlot1"));
-      if (!save || save.balance < sponsor.signingFee) {
-        alert("Not enough funds to sign sponsor!");
-        return;
+  <head>
+    <title>PR Department - F1 Management Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
       }
+      h1 {
+        text-align: center;
+        color: #d32f2f;
+      }
+      .section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      button {
+        background-color: #1976d2;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #1565c0;
+      }
+      select, input {
+        padding: 8px;
+        font-size: 16px;
+        margin: 5px 0;
+        width: 100%;
+      }
+      .sponsor-slot {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PR Department</h1><div class="section">
+  <h2>Reputation</h2>
+  <p><strong>Current Reputation:</strong> <span id="reputation">Loading...</span></p>
+</div>
 
-      save.balance -= sponsor.signingFee;
-      localStorage.setItem("f1GameSaveSlot1", JSON.stringify(save));
-      localStorage.setItem(`f1Sponsor_${selectedSlotKey}`, JSON.stringify({
-        name: sponsor.name,
-        remaining: sponsor.contractLength,
-        perRaceFee: sponsor.perRaceFee,
-        bonusCondition: sponsor.bonusCondition,
-        bonusPayout: sponsor.bonusPayout
-      }));
+<div class="section">
+  <h2>Weekly Media Event</h2>
+  <label for="mediaEvent">Choose an event:</label>
+  <select id="mediaEvent">
+    <option value="">-- Select Media Event --</option>
+    <option value="meetDrivers">Meet the Drivers</option>
+    <option value="youtubeInterview">YouTube Interview</option>
+    <option value="funSkits">Fun Skits</option>
+    <option value="charityDay">Charity Day</option>
+  </select>
+  <button onclick="scheduleMediaEvent()">Schedule Event</button>
+  <p id="eventStatus"></p>
+</div>
 
-      alert(`${sponsor.name} signed to ${selectedSlotKey}`);
-      closeSponsorModal();
-      loadSponsorSlots();
+<div class="section">
+  <h2>Sponsorship Slots</h2>
+
+  <div class="sponsor-slot">
+    <h3>Front Wing</h3>
+    <button onclick="viewSponsors('frontWing')">View Sponsor Offers</button>
+    <div id="frontWingOffer"></div>
+  </div>
+
+  <div class="sponsor-slot">
+    <h3>Rear Wing</h3>
+    <button onclick="viewSponsors('rearWing')">View Sponsor Offers</button>
+    <div id="rearWingOffer"></div>
+  </div>
+
+  <div class="sponsor-slot">
+    <h3>Side Pod</h3>
+    <button onclick="viewSponsors('sidePod')">View Sponsor Offers</button>
+    <div id="sidePodOffer"></div>
+  </div>
+
+  <div class="sponsor-slot">
+    <h3>Engine Cover</h3>
+    <button onclick="viewSponsors('engineCover')">View Sponsor Offers</button>
+    <div id="engineCoverOffer"></div>
+  </div>
+</div>
+
+<script>
+  let reputation = 50;
+
+  function scheduleMediaEvent() {
+    const event = document.getElementById("mediaEvent").value;
+    if (!event) {
+      document.getElementById("eventStatus").innerText = "Please select an event.";
+      return;
     }
 
-    window.onload = function () {
-      loadReputation();
-      loadSponsorSlots();
+    reputation += 2; // Temp flat increase for now
+    localStorage.setItem("prReputation", reputation);
+    document.getElementById("eventStatus").innerText = `Scheduled '${event}' — Reputation increased!`;
+    updateReputationDisplay();
+  }
+
+  function updateReputationDisplay() {
+    document.getElementById("reputation").innerText = reputation;
+  }
+
+  function viewSponsors(slot) {
+    const offers = [
+      {
+        name: "SpeedFuel Co.",
+        length: 5,
+        signingFee: 10,
+        perRace: 2,
+        bonus: "+5m if 50pts scored"
+      },
+      {
+        name: "TurboTech", length: 3, signingFee: 5, perRace: 1.5, bonus: "+2m if Top 5 constructor"
+      }
+    ];
+
+    let html = "<ul>" + offers.map(offer => `
+      <li>
+        <strong>${offer.name}</strong><br/>
+        Length: ${offer.length} races<br/>
+        Signing Fee: $${offer.signingFee}m<br/>
+        Per Race Fee: $${offer.perRace}m<br/>
+        Bonus: ${offer.bonus}<br/>
+        <button onclick=\"signSponsor('${slot}', '${offer.name}', ${offer.length}, ${offer.signingFee}, ${offer.perRace}, \"${offer.bonus}\")\">Sign</button>
+      </li>
+    `).join("") + "</ul>";
+
+    document.getElementById(slot + "Offer").innerHTML = html;
+  }
+
+  function signSponsor(slot, name, length, signingFee, perRace, bonus) {
+    const sponsor = {
+      name, length, signingFee, perRace, bonus, remaining: length
     };
-  </script></body>
+
+    localStorage.setItem(`sponsor_${slot}`, JSON.stringify(sponsor));
+    alert(`${name} signed to ${slot} for ${length} races.`);
+    document.getElementById(slot + "Offer").innerHTML = `${name} — Active Sponsor (${length} races left)`;
+  }
+
+  window.onload = function() {
+    reputation = parseInt(localStorage.getItem("prReputation")) || 50;
+    updateReputationDisplay();
+  }
+</script>
+
+  </body>
 </html>

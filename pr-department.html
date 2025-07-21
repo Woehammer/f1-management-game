@@ -1,146 +1,120 @@
 <!DOCTYPE html><html>
 <head>
   <title>PR Department - F1 Management Game</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: sans-serif;
       background-color: #f5f5f5;
       padding: 20px;
     }
-    h1, h2 {
-      text-align: center;
+    h1, h2, h3 {
       color: #d32f2f;
+      text-align: center;
     }
     .section {
-      background: white;
+      background-color: white;
+      border-radius: 8px;
       padding: 20px;
       margin: 20px auto;
-      max-width: 700px;
-      border-radius: 8px;
+      max-width: 800px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    label, select, button {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 16px;
+    .sponsorship-location {
+      margin-bottom: 20px;
+      text-align: center;
     }
     button {
       background-color: #1976d2;
       color: white;
+      padding: 10px 15px;
+      margin: 5px;
       border: none;
       border-radius: 5px;
+      font-size: 14px;
       cursor: pointer;
     }
     button:hover {
       background-color: #1565c0;
     }
-    .sponsor-card {
-      background-color: #fafafa;
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
+    .modal {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: none;
+    }
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
     }
   </style>
 </head>
 <body>
   <h1>PR Department</h1>  <div class="section">
-    <h2>Weekly Media Event</h2>
-    <label for="mediaEventSelect">Choose Media Event:</label>
-    <select id="mediaEventSelect">
-      <option value="">-- None --</option>
-      <option value="meetDrivers">Meet the Drivers ($250k, +3 Rep)</option>
-      <option value="factoryTour">Factory Tour Livestream ($500k, +5 Rep)</option>
-      <option value="charityRun">Charity Fun Run ($750k, +6 Rep)</option>
-      <option value="youtubeQA">YouTube Q&A ($100k, +2 Rep)</option>
-    </select>
-    <button onclick="scheduleMediaEvent()">Schedule Event</button>
-    <p id="mediaEventStatus"></p>
-  </div>  <div class="section">
-    <h2>Team Reputation</h2>
-    <p><strong>Current Reputation:</strong> <span id="reputation">Loading...</span></p>
-  </div>  <div class="section">
-    <h2>Active Sponsors</h2>
-    <div id="sponsorList">
-      <!-- Sponsors will be dynamically listed here -->
+    <h2>Sponsorship Slots</h2><div class="sponsorship-location">
+  <h3>Front Wing</h3>
+  <button onclick="openSponsorModal('frontWingPrimary')">Primary Sponsor</button>
+  <button onclick="openSponsorModal('frontWingSecondary1')">Secondary 1</button>
+  <button onclick="openSponsorModal('frontWingSecondary2')">Secondary 2</button>
+</div>
+
+<div class="sponsorship-location">
+  <h3>Rear Wing</h3>
+  <button onclick="openSponsorModal('rearWingPrimary')">Primary Sponsor</button>
+  <button onclick="openSponsorModal('rearWingSecondary1')">Secondary 1</button>
+  <button onclick="openSponsorModal('rearWingSecondary2')">Secondary 2</button>
+</div>
+
+<div class="sponsorship-location">
+  <h3>Side Pods</h3>
+  <button onclick="openSponsorModal('sidePodPrimary')">Primary Sponsor</button>
+  <button onclick="openSponsorModal('sidePodSecondary1')">Secondary 1</button>
+  <button onclick="openSponsorModal('sidePodSecondary2')">Secondary 2</button>
+</div>
+
+<div class="sponsorship-location">
+  <h3>Engine Cover</h3>
+  <button onclick="openSponsorModal('engineCoverPrimary')">Primary Sponsor</button>
+  <button onclick="openSponsorModal('engineCoverSecondary1')">Secondary 1</button>
+  <button onclick="openSponsorModal('engineCoverSecondary2')">Secondary 2</button>
+</div>
+
+  </div>  <!-- Sponsor Modal -->  <div id="sponsorModal" class="modal">
+    <div class="modal-content">
+      <h3>Select a Sponsor for <span id="sponsorSlotName">...</span></h3>
+      <div id="sponsorList">
+        <!-- Populated by JavaScript -->
+      </div>
+      <button onclick="closeSponsorModal()">Cancel</button>
     </div>
   </div>  <script>
-    let reputation = 25;
-    let balance = 100;
-    const sponsors = [
-      {
-        name: "Shell",
-        duration: 8,
-        signingFee: 10,
-        perRace: 1.5,
-        bonus: "Top 5 Constructors = +5M"
-      },
-      {
-        name: "TAG Heuer",
-        duration: 5,
-        signingFee: 5,
-        perRace: 1,
-        bonus: "Driver Pole = +1M"
-      }
+    const sampleSponsors = [
+      { name: "Shell", fee: 5, bonus: "Top 5 finish", length: "10 races" },
+      { name: "Monster Energy", fee: 3, bonus: "Points finish", length: "5 races" },
+      { name: "Hugo Boss", fee: 4, bonus: "Podium", length: "8 races" },
     ];
 
-    function scheduleMediaEvent() {
-      const event = document.getElementById("mediaEventSelect").value;
-      const status = document.getElementById("mediaEventStatus");
-      let message = "";
-
-      switch (event) {
-        case "meetDrivers":
-          reputation += 3;
-          balance -= 0.25;
-          message = "Meet the Drivers scheduled! +3 Rep";
-          break;
-        case "factoryTour":
-          reputation += 5;
-          balance -= 0.5;
-          message = "Factory Tour scheduled! +5 Rep";
-          break;
-        case "charityRun":
-          reputation += 6;
-          balance -= 0.75;
-          message = "Charity Fun Run scheduled! +6 Rep";
-          break;
-        case "youtubeQA":
-          reputation += 2;
-          balance -= 0.1;
-          message = "YouTube Q&A scheduled! +2 Rep";
-          break;
-        default:
-          message = "No event selected.";
-      }
-
-      document.getElementById("reputation").innerText = reputation;
-      status.innerText = message;
-    }
-
-    function renderSponsors() {
-      const container = document.getElementById("sponsorList");
-      sponsors.forEach(s => {
-        const card = document.createElement("div");
-        card.className = "sponsor-card";
-        card.innerHTML = `
-          <strong>${s.name}</strong><br/>
-          Duration: ${s.duration} races<br/>
-          Signing Fee: $${s.signingFee}M<br/>
-          Per Race: $${s.perRace}M<br/>
-          Bonus: ${s.bonus}
-        `;
-        container.appendChild(card);
+    function openSponsorModal(slotId) {
+      document.getElementById("sponsorSlotName").innerText = slotId.replace(/([A-Z])/g, ' $1');
+      const sponsorList = document.getElementById("sponsorList");
+      sponsorList.innerHTML = "";
+      sampleSponsors.forEach(s => {
+        const div = document.createElement("div");
+        div.innerHTML = `<strong>${s.name}</strong><br>Signing Fee: $${s.fee}m<br>Bonus: ${s.bonus}<br>Length: ${s.length}<br><button>Select</button><hr>`;
+        sponsorList.appendChild(div);
       });
+      document.getElementById("sponsorModal").style.display = "block";
     }
 
-    window.onload = function () {
-      document.getElementById("reputation").innerText = reputation;
-      renderSponsors();
-    };
+    function closeSponsorModal() {
+      document.getElementById("sponsorModal").style.display = "none";
+    }
   </script></body>
 </html>
